@@ -1,6 +1,8 @@
 package controllers;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Ejercicios {
 
@@ -28,8 +30,19 @@ public class Ejercicios {
      * frecuencia.
      */
     public static boolean areAnagrams(String str1, String str2) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+        HashMap<Character, Integer> mapa1 = new HashMap<>();
+        HashMap<Character, Integer> mapa2 = new HashMap<>();
 
+        for (char c : str1.toCharArray()) {
+            mapa1.put(c, mapa1.getOrDefault(c, 0) + 1);
+        }
+        for (char c : str2.toCharArray()) {
+            mapa2.put(c, mapa2.getOrDefault(c, 0) + 1);
+        }
+        return mapa1.equals(mapa2);
     }
 
     /*
@@ -48,7 +61,16 @@ public class Ejercicios {
      * Output: null
      */
     public int[] sumatoriaDeDos(int[] nums, int objetivo) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Map<Integer, Integer> mapa = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int comp = objetivo - nums[i];
+            if (mapa.containsKey(comp)) {
+                return new int[] { mapa.get(comp), i };
+            }
+            mapa.put(nums[i], i);
+        }
+        return null;
     }
 
     /**
@@ -60,7 +82,19 @@ public class Ejercicios {
      * Output: {h=1, o=1, l=1, a=1}
      */
     public void contarCaracteres(String texto) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Map<Character, Integer> mapa = new LinkedHashMap<>();
+        for (Character c : texto.toCharArray()) {
+            if (mapa.containsKey(c)) {
+                int n = mapa.get(c) + 1;
+                mapa.replace(c, n);
+            } else {
+                mapa.put(c, 1);
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : mapa.entrySet()) {
+            System.out.print(entry.getKey() + " = " + entry.getValue() + ", ");
+        }
+
     }
 
     /**
@@ -72,6 +106,21 @@ public class Ejercicios {
      * Output: true
      */
     public boolean sonAnagramas(String palabra1, String palabra2) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (palabra1.length() != palabra2.length()) {
+            return false;
+        }
+
+        HashMap<Character, Integer> mapa1 = new HashMap<>();
+        HashMap<Character, Integer> mapa2 = new HashMap<>();
+
+        for (char c : palabra1.toCharArray()) {
+            mapa1.put(c, mapa1.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : palabra2.toCharArray()) {
+            mapa2.put(c, mapa2.getOrDefault(c, 0) + 1);
+        }
+
+        return mapa1.equals(mapa2);
     }
 }

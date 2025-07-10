@@ -74,7 +74,33 @@ public class App {
     }
 
     private static void runEjerccios() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        System.out.println("\nEJERCICIOS:");
+        Ejercicios ejercicios = new Ejercicios();
 
+        System.out.println("\nEjer1 -> son Anagramas");
+        System.out.println("Ejemplo1: listen y silent -> " + Ejercicios.areAnagrams("listen", "silent"));
+        System.out.println("Ejemplo2:  hello y bello -> " + Ejercicios.areAnagrams("hello", "bello"));
+        System.out.println("Ejemplo3: triangle e integral -> " + Ejercicios.areAnagrams("triangle", "integral"));
+
+        System.out.println("\nEjer2 -> sumatoria de dos");
+        System.out.println("Ejemplo A:");
+        System.out.println("Input: nums = [9,2,3,6], objetivo = 5: ");
+        int[] nums = ejercicios.sumatoriaDeDos(new int[] { 9, 2, 3, 6 }, 5);
+        for (int c : nums) {
+            System.out.print(c + ",");
+        }
+
+        System.out.println("\nEjemplo B:");
+        System.out.println("Input: nums = [9,2,3,6], objetivo = 5: " );
+        System.out.println(ejercicios.sumatoriaDeDos(new int[] { 9, 2, 3, 6 }, 10));
+
+
+        System.out.println("\nEjer 3 -> Contar Caracteres");
+        System.out.println("Input: hola");
+        ejercicios.contarCaracteres("hola");
+
+        System.out.println("Ejer 4 -> anagramas");
+        System.out.println("Input: palabra1 = roma, palabra2 = amor " );
+        System.out.println(ejercicios.sonAnagramas("amor", "roma"));
     }
 }
